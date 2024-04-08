@@ -1,10 +1,8 @@
 package com.backend.wavault.model.entity;
 
 import com.backend.wavault.model.enums.Role;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +10,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "users")
 public class AppUser implements UserDetails {
 
     @Id
@@ -40,6 +45,9 @@ public class AppUser implements UserDetails {
     private Boolean isVerified;
 
     private String pin;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<JwtToken> jwtTokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

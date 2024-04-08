@@ -1,4 +1,4 @@
-package com.backend.wavault.dao;
+package com.backend.wavault.model.dao.user;
 
 import com.backend.wavault.model.entity.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;

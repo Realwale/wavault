@@ -1,6 +1,6 @@
 package com.backend.wavault.security;
 
-import com.backend.wavault.dao.AppUserRepository;
+import com.backend.wavault.model.dao.user.AppUserRepository;
 import com.backend.wavault.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
