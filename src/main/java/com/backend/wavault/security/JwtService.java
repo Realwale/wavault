@@ -1,7 +1,6 @@
 package com.backend.wavault.security;
 
 
-import com.backend.wavault.model.dao.token.TokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -24,8 +23,6 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class JwtService {
-
-    private final TokenRepository tokenRepository;
 
     @Value("${jwt.expiration.access-token}")
     private long access_expiration;
