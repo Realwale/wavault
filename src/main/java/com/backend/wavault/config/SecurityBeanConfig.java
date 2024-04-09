@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityBeanConfig {
 
     private final CustomUserDetailService userDetailsService;
+
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -24,7 +25,7 @@ public class SecurityBeanConfig {
         return authProvider;
     }
     @Bean
-    public AuthenticationManager authenticationProvider(AuthenticationConfiguration config) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
     @Bean
