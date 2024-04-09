@@ -1,7 +1,6 @@
 package com.backend.wavault.config;
 
 import com.backend.wavault.security.CustomUserDetailService;
-import com.backend.wavault.utils.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
