@@ -4,6 +4,7 @@ import com.backend.wavault.utils.EmailUtils;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationListener;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -27,7 +28,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationE
 
 
     @Override
-    public void onApplicationEvent(OnRegistrationEvent event) {
+    public void onApplicationEvent(@NonNull OnRegistrationEvent event) {
 
         try {
             this.confirmRegistration(event);
