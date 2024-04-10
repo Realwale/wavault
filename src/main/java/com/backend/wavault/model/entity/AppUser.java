@@ -46,6 +46,10 @@ public class AppUser implements UserDetails {
 
     private String pin;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "kyc_details_id", referencedColumnName = "id")
+    private KycDetails kycDetails;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<JwtToken> jwtTokens;
 
