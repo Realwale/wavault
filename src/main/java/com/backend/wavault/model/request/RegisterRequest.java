@@ -20,6 +20,7 @@ public class RegisterRequest {
     private String password;
     private String phoneNumber;
     private String bvn;
+    private String address;
 
     public void validateRegistrationRequest() {
         List<String> errors = new ArrayList<>();
@@ -30,6 +31,7 @@ public class RegisterRequest {
         validatePassword(password, errors);
         validatePhoneNumber(phoneNumber, errors);
         validateBvn(bvn, errors);
+        validateAddress(address, errors);
 
         if (!errors.isEmpty()) {
             throw new ValidationException(String.join(", ", errors));
@@ -85,6 +87,14 @@ public class RegisterRequest {
             errors.add("BVN field cannot be empty");
         } else if (bvn.length() != 11 || !bvn.matches("\\d+")) {
             errors.add("BVN must be a 11-digit string containing only digits");
+        }
+    }
+
+    private static void validateAddress(String address, List<String> errors) {
+        if (address == null || address.trim().isEmpty()) {
+            errors.add("Address is missing or empty");
+        } else if (address.length() < 5) {
+            errors.add("Address should be more than 5 characters");
         }
     }
 
