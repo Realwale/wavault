@@ -29,9 +29,8 @@ public class AppUserServiceImpl implements AppUserService{
     @Override
     public APIResponse createAccount(RegisterRequest request) throws IOException {
 
-        Optional<AppUser> appUser = userRepository.findByEmail(request.getEmail());
-        if (appUser.isPresent()){
-            throw new ResourceAlreadyExistsException("User already exists with email "+request.getEmail() +"!");
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new ResourceAlreadyExistsException("User already exists with email " + request.getEmail());
         }
 
         AppUser newUser = AppUser.builder()
