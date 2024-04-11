@@ -73,4 +73,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
     }
 
+    @ExceptionHandler(InvalidArgumentException.class)
+    public ResponseEntity<ErrorResponse> onInvalidArgumentException(InvalidArgumentException e) {
+        var response = new ErrorResponse(e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
 }

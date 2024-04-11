@@ -40,9 +40,10 @@ public class AppUser implements UserDetails {
 
     private String bvn;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 
-    private Boolean isVerified;
+    private boolean isVerified;
 
     private String pin;
 
