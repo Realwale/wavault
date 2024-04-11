@@ -8,7 +8,7 @@ public interface TokenService {
 
     void saveConfirmationToken(AppUser user);
 
-    APIResponse confirmEmail(String token, HttpServletRequest request);
+    APIResponse validateConfirmationEmailToken(String token, HttpServletRequest request);
 
     APIResponse sendNewConfirmationLink(String email, HttpServletRequest request);
 }

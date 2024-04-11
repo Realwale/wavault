@@ -49,7 +49,7 @@ public class TokenServiceImpl implements TokenService {
 
 
     @Override
-    public APIResponse confirmEmail(String token, HttpServletRequest request) {
+    public APIResponse validateConfirmationEmailToken(String token, HttpServletRequest request) {
         JwtToken confirmationToken = tokenRepository.findByToken(token)
                 .orElseThrow(() -> new ResourceNotFoundException("Null confirmation link"));
 
