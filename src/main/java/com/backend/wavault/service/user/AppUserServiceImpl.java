@@ -3,7 +3,9 @@ package com.backend.wavault.service.user;
 import com.backend.wavault.exception.ResourceAlreadyExistsException;
 import com.backend.wavault.model.dao.user.AppUserRepository;
 import com.backend.wavault.model.entity.AppUser;
+import com.backend.wavault.model.entity.KycDetails;
 import com.backend.wavault.model.entity.Wallet;
+import com.backend.wavault.model.enums.KycStatus;
 import com.backend.wavault.model.enums.Role;
 import com.backend.wavault.model.request.RegisterRequest;
 import com.backend.wavault.model.request.VirtualAccountCreationRequest;
@@ -59,8 +61,12 @@ public class AppUserServiceImpl implements AppUserService{
                       .build()
         );
 
+        KycDetails kycDetails = KycDetails.builder()
+                .status(KycStatus.Pending)
+                .build();
         Wallet userWallet = walletService.createWallet(creationResponse, user);
         user.setWallet(userWallet);
+        user.setKycDetails(kycDetails);
         userRepository.save(user);
         return APIResponse.builder()
                 .hasError(false)

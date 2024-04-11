@@ -58,7 +58,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationE
                           String confirmationUrl) throws MessagingException,
             UnsupportedEncodingException {
 
-        String senderName = "EntryGenius";
+        String senderName = "WaVault";
         Context context = new Context();
         context.setVariable("name", name);
         context.setVariable(urlVariableName, confirmationUrl);
