@@ -13,7 +13,7 @@ public class UrlConstants {
             "/swagger-resources/**",
             "/configuration/ui",
             "/configuration/security",
-            "/api/v1/account/registration",
+            "/user/account/registration",
             "/api/v1/account/registration/verify",
             "/api/v1/account/registration/resend-link",
             "/api/v1/account/login"
