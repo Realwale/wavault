@@ -1,5 +1,6 @@
 package com.backend.wavault.api;
 
+import com.backend.wavault.model.request.LoginRequest;
 import com.backend.wavault.model.request.RegisterRequest;
 import com.backend.wavault.model.response.APIResponse;
 import com.backend.wavault.service.token.TokenService;
@@ -36,6 +37,13 @@ public class UserController {
     @PostMapping("/registration/resend-link")
     public ResponseEntity<APIResponse> sendNewConfirmationLink(@RequestParam String email, HttpServletRequest request){
         APIResponse response = tokenService.sendNewConfirmationLink(email, request);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<APIResponse> authenticateLogin(@RequestBody LoginRequest request){
+        request.validateLoginRequest();
+        APIResponse response = userService.authenticateLogin(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
